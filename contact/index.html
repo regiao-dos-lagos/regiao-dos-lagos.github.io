@@ -5,17 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="A Região dos Lagos Online é o melhor lugar para anunciar suas vagas de trabalho. Aqui você encontra candidatos para todas as áreas de atuação.">
-    <meta name="keywords" content="">
+    <meta name="description" content="A Região dos Lagos Online está sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco.">
+    <meta name="keywords" content="Região dos Lagos, Região dos Lagos Online, Contato, Endereço, Horário de funcionamento, Redes sociais">
 
     <meta property="og:title"
-        content="Região dos Lagos Online" />
+        content="Contato | Região dos Lagos Online" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://regiaodoslagos.online/" />
-    <meta property="og:description" content="A Região dos Lagos Online é o melhor lugar para anunciar suas vagas de trabalho. Aqui você encontra candidatos para todas as áreas de atuação." />
+    <meta property="og:url" content="https://regiaodoslagos.online/contact" />
+    <meta property="og:description" content="A Região dos Lagos Online está sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco." />
 
     <title>
-        Região dos Lagos Online
+        Contato | Região dos Lagos Online
     </title>
 
     <link rel="home" href="https://regiaodoslagos.online">
@@ -50,7 +50,7 @@
     
     
     <a title="Região dos Lagos Online - Contato" href="/contact"
-        class=" ml-6 text-gray-700 hover:text-blue-600">
+        class="active text-blue-600 ml-6 text-gray-700 hover:text-blue-600">
         Contato
     </a>
 </nav>
@@ -81,51 +81,56 @@
         
         <li class="pl-4">
             <a title="Região dos Lagos Online - Contato" href="/contact"
-                class="text-gray-800 hover:text-blue-500 mb-4 mt-4 block text-sm no-underline">Contato</a>
+                class="active text-blue-500 mb-4 mt-4 block text-sm no-underline">Contato</a>
         </li>
     </ul>
 </nav>
 
     <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-16 px-6">
-            <img src="/assets/img/about.png" alt="About image"
-        class="mx-auto my-6 flex h-64 w-64 rounded-full bg-contain md:float-right md:ml-10">
+            <h1>Contato</h1>
 
-    <p class="text-justify">
-        A <strong>Região dos Lagos</strong> é um destino turístico paradisíaco, com belas praias, lagoas,
-        cachoeiras e montanhas. É também um importante <strong>polo econômico</strong>, com diversos setores em expansão.
+    <p class="mb-8">
+        A <strong>Região dos Lagos Online</strong> está sempre à disposição para atender às suas necessidades. Se você tiver
+        alguma dúvida ou sugestão, entre em contato conosco.
     </p>
 
-    <p class="text-justify">
-        Para atender às necessidades da população da região, a <strong>Região dos Lagos Online</strong> foi criada. Somos
-        um hub de serviços que oferecerá uma ampla variedade de opções para quem busca trabalho, compra e venda de objetos e
-        imóveis, passeios turísticos, eventos, hospedagens, restaurantes e muito mais.
-    </p>
+    <form class="mb-12" name="contact-form" method="post" action="">
+        <div class="flex flex-wrap mb-6 -mx-3">
+            <div class="w-full md:w-1/2 mb-6 md:mb-0 px-3">
+                <label class="block mb-2 text-gray-800 text-sm font-semibold" for="contact-name">
+                    Nome
+                </label>
 
-    <p class="text-justify">
-        Inicialmente, estaremos trabalhando apenas com vagas de emprego na região. Nosso objetivo é
-        conectar empresas e candidatos, facilitando o processo de recrutamento e seleção. Oferecemos um ambiente seguro e
-        confiável para que você possa encontrar o emprego ideal.
-    </p>
+                <input type="text" id="contact-name" placeholder="Maria Laura" name="name"
+                    class="block w-full border shadow rounded-lg outline-none mb-2 px-4 py-3" required>
+            </div>
 
-    <p class="text-justify">
-        Aqui você encontra as melhores vagas de trabalho da Região dos Lagos. São vagas para todos os
-        níveis de escolaridade e experiência, em diversas áreas de atuação.
-    </p>
+            <div class="w-full px-3 md:w-1/2">
+                <label class="block text-gray-800 text-sm font-semibold mb-2" for="contact-email">
+                    Email
+                </label>
 
-    <div>
-        <h3>Oferecemos vagas para:</h3>
+                <input type="email" id="contact-email" placeholder="email@domain.com" name="email"
+                    class="block w-full border shadow rounded-lg outline-none mb-2 px-4 py-3" required>
+            </div>
+        </div>
 
-        <ul class="ml-20">
-            <li><strong>Setor turístico</strong>: recepcionistas, garçons, camareiros, guias turísticos, etc.</li>
-            <li><strong>Setor comercial</strong>: vendedores, atendentes, promotores, etc.</li>
-            <li><strong>Setor industrial</strong>: operadores de máquinas, técnicos, engenheiros, etc.</li>
-            <li><strong>Setor de serviços</strong>: professores, enfermeiros, médicos, etc.</li>
-        </ul>
-    </div>
+        <div class="w-full mb-12">
+            <label class="block text-gray-800 text-sm font-semibold mb-2" for="contact-message">
+                Mensagem
+            </label>
 
-    <p> E muito mais!</p>
+            <textarea id="contact-message" rows="4" name="message"
+                class="block w-full border shadow rounded-lg outline-none appearance-none mb-2 px-4 py-3"
+                placeholder="Escreva sua mensagem aqui." required></textarea>
+        </div>
 
-        </main>
+        <div class="flex justify-end w-full">
+            <input type="submit" value="Enviar"
+                class="block bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold leading-snug tracking-wide uppercase shadow rounded-lg cursor-pointer px-6 py-3">
+        </div>
+    </form>
+    </main>
 
     <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
         <div class="flex flex-col justify-center">
