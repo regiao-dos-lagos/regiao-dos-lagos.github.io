@@ -106,7 +106,7 @@
     </p>
 
     <form class="mb-12" name="contact-form" method="post" action="">
-        <input type="hidden" name="created_at" value="2024-02-06 14:30:52">
+        <input type="hidden" id="created_at" name="created_at" value="">
         <div class="-mx-3 mb-6 flex flex-wrap">
             <div class="mb-6 w-full px-3 md:mb-0 md:w-1/2">
                 <label class="mb-2 block text-sm font-semibold text-gray-800" for="contact-name">
@@ -138,7 +138,7 @@
         </div>
 
         <div class="flex w-full justify-end">
-            <input type="submit" value="Enviar"
+            <input type="submit" value="Enviar" id="submit"
                 class="block cursor-pointer rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold uppercase leading-snug tracking-wide text-white shadow hover:bg-blue-600">
         </div>
     </form>
@@ -191,27 +191,7 @@
 
     <script src="/assets/build/js/main.js?id=f68c3dcae1513f543f9cd1ed73e3005c"></script>
 
-        <script>
-        const urlGoogleSheet =
-            'https://script.google.com/macros/s/AKfycbwFpUs1yvJ99WIRSh3N8UvG14g8FMoyDPiTBheHJJSzPxKmS1pXVAqCwVxAOp643uQN/exec';
-        const form = document.forms['contact-form'];
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            fetch(urlGoogleSheet, {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(response => {
-                    alert('Dados enviados com sucesso!', response);
-                    form.reset();
-                })
-                .catch(error => {
-                    console.error('Erro no envio dos dados!', error);
-                });
-        });
-    </script>
+        <script src="/assets/build/js/contact.js?id=05c6a67e611fb28b54f8f222d9ebc10d"></script>
 <script>
     const navMenu = {
         toggle() {
