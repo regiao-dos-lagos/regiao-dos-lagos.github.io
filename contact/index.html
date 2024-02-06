@@ -39,7 +39,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
         rel="stylesheet">
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=5bf5c85a034775a6ceca3818ca9b3370">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=1be3062a60b39522c88e5bf21eaca012">
 </head>
 
 <body class="flex flex-col justify-between min-h-screen bg-gray-100 text-gray-800 leading-normal font-sans">
@@ -106,39 +106,40 @@
     </p>
 
     <form class="mb-12" name="contact-form" method="post" action="">
-        <div class="flex flex-wrap mb-6 -mx-3">
-            <div class="w-full md:w-1/2 mb-6 md:mb-0 px-3">
-                <label class="block mb-2 text-gray-800 text-sm font-semibold" for="contact-name">
+        <input type="hidden" name="created_at" value="2024-02-06 14:30:52">
+        <div class="-mx-3 mb-6 flex flex-wrap">
+            <div class="mb-6 w-full px-3 md:mb-0 md:w-1/2">
+                <label class="mb-2 block text-sm font-semibold text-gray-800" for="contact-name">
                     Nome
                 </label>
 
                 <input type="text" id="contact-name" placeholder="Maria Laura" name="name"
-                    class="block w-full border shadow rounded-lg outline-none mb-2 px-4 py-3" required>
+                    class="mb-2 block w-full rounded-lg border px-4 py-3 shadow outline-none" required>
             </div>
 
             <div class="w-full px-3 md:w-1/2">
-                <label class="block text-gray-800 text-sm font-semibold mb-2" for="contact-email">
+                <label class="mb-2 block text-sm font-semibold text-gray-800" for="contact-email">
                     Email
                 </label>
 
                 <input type="email" id="contact-email" placeholder="email@domain.com" name="email"
-                    class="block w-full border shadow rounded-lg outline-none mb-2 px-4 py-3" required>
+                    class="mb-2 block w-full rounded-lg border px-4 py-3 shadow outline-none" required>
             </div>
         </div>
 
-        <div class="w-full mb-12">
-            <label class="block text-gray-800 text-sm font-semibold mb-2" for="contact-message">
+        <div class="mb-12 w-full">
+            <label class="mb-2 block text-sm font-semibold text-gray-800" for="contact-message">
                 Mensagem
             </label>
 
             <textarea id="contact-message" rows="4" name="message"
-                class="block w-full border shadow rounded-lg outline-none appearance-none mb-2 px-4 py-3"
+                class="mb-2 block w-full appearance-none rounded-lg border px-4 py-3 shadow outline-none"
                 placeholder="Escreva sua mensagem aqui." required></textarea>
         </div>
 
-        <div class="flex justify-end w-full">
+        <div class="flex w-full justify-end">
             <input type="submit" value="Enviar"
-                class="block bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold leading-snug tracking-wide uppercase shadow rounded-lg cursor-pointer px-6 py-3">
+                class="block cursor-pointer rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold uppercase leading-snug tracking-wide text-white shadow hover:bg-blue-600">
         </div>
     </form>
     </main>
@@ -188,9 +189,30 @@
         </div>
     </footer>
 
-    <script src="/assets/build/js/main.js?id=aaf0c1a9e7549bff9861b7721a02566c"></script>
+    <script src="/assets/build/js/main.js?id=f68c3dcae1513f543f9cd1ed73e3005c"></script>
 
-    <script>
+        <script>
+        const urlGoogleSheet =
+            'https://script.google.com/macros/s/AKfycbwFpUs1yvJ99WIRSh3N8UvG14g8FMoyDPiTBheHJJSzPxKmS1pXVAqCwVxAOp643uQN/exec';
+        const form = document.forms['contact-form'];
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            fetch(urlGoogleSheet, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    alert('Dados enviados com sucesso!', response);
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Erro no envio dos dados!', error);
+                });
+        });
+    </script>
+<script>
     const navMenu = {
         toggle() {
             const menu = document.getElementById('js-nav-menu');
