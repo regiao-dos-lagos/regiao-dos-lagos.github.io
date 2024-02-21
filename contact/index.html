@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="A Região dos Lagos Online está sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco.">
-    <meta name="keywords" content="Região dos Lagos, Região dos Lagos Online, Contato, Endereço, Horário de funcionamento, Redes sociais">
+    <meta name="description" content="Estamos sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco.">
+    <meta name="keywords" content="Região dos Lagos Online, Contato, Redes sociais">
 
     <meta property="og:title"
         content="Contato | Região dos Lagos Online" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://regiaodoslagos.online/contact" />
-    <meta property="og:description" content="A Região dos Lagos Online está sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco." />
+    <meta property="og:description" content="Estamos sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco." />
+    <meta name="google" content="notranslate">
+    <meta name="i18nDefaultLocale" content="pt_BR">
+    <meta name="i18nLocale" content="pt_BR">
+    <meta name="requestIpCountryCode" content="br">
 
     <title>
         Contato | Região dos Lagos Online
@@ -39,10 +43,22 @@
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="preload"
         as="style"onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=6ddf85df94c3d55fdde3160c5e67446e">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=35c0b531746890805e4c1733caa5845a">
 </head>
 
 <body class="flex min-h-screen flex-col justify-between bg-gray-100 font-sans leading-normal text-gray-800">
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <header class="flex h-24 items-center border-b bg-white py-4 shadow" role="banner">
         <div class="container mx-auto flex max-w-8xl items-center px-4 lg:px-8">
             <div class="flex items-center">
@@ -59,6 +75,10 @@
                 
                 <nav class="hidden items-center justify-end text-lg lg:flex">
     
+            <a title="Região dos Lagos Online - Cadastrar Vaga" href="/register-job"
+            class=" ml-6 text-white hover:text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Cadastrar Vaga
+        </a>
     
     <a title="Região dos Lagos Online - Contato" href="/contact"
         class="active text-blue-600 ml-6 text-gray-700 hover:text-blue-600">
@@ -89,6 +109,12 @@
     <nav id="js-nav-menu" class="hidden w-auto bg-gray-200 px-2 pb-2 pt-6 shadow lg:hidden">
     <ul class="my-0">
         
+                    <li class="pl-4">
+                <a title="Região dos Lagos Online - Cadastrar Vaga" href="/register-job"
+                    class=" md:ml-6 text-white hover:text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    Cadastrar Vaga
+                </a>
+            </li>
         
         <li class="pl-4">
             <a title="Região dos Lagos Online - Contato" href="/contact"
@@ -189,7 +215,7 @@
         </div>
     </footer>
 
-    <script src="/assets/build/js/main.js?id=f68c3dcae1513f543f9cd1ed73e3005c" defer></script>
+    <script src="/assets/build/js/main.js?id=c95bdc730a73d91906de10153bdd7f6b" defer></script>
 
         <script src="/assets/build/js/contact.js?id=05c6a67e611fb28b54f8f222d9ebc10d"></script>
     <script>

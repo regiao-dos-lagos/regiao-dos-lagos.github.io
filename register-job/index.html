@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://regiaodoslagos.online/register-job" />
     <meta property="og:description" content="A Região dos Lagos Online está sempre à disposição para atender às suas necessidades. Se você tiver alguma dúvida ou sugestão, entre em contato conosco." />
+    <meta name="google" content="notranslate">
+    <meta name="i18nDefaultLocale" content="pt_BR">
+    <meta name="i18nLocale" content="pt_BR">
+    <meta name="requestIpCountryCode" content="br">
 
     <title>
         Cadastre sua vaga | Região dos Lagos Online
@@ -39,10 +43,22 @@
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="preload"
         as="style"onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=6ddf85df94c3d55fdde3160c5e67446e">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=35c0b531746890805e4c1733caa5845a">
 </head>
 
 <body class="flex min-h-screen flex-col justify-between bg-gray-100 font-sans leading-normal text-gray-800">
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <header class="flex h-24 items-center border-b bg-white py-4 shadow" role="banner">
         <div class="container mx-auto flex max-w-8xl items-center px-4 lg:px-8">
             <div class="flex items-center">
@@ -59,6 +75,10 @@
                 
                 <nav class="hidden items-center justify-end text-lg lg:flex">
     
+            <a title="Região dos Lagos Online - Cadastrar Vaga" href="/register-job"
+            class="active ml-6 text-white hover:text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Cadastrar Vaga
+        </a>
     
     <a title="Região dos Lagos Online - Contato" href="/contact"
         class=" ml-6 text-gray-700 hover:text-blue-600">
@@ -89,6 +109,12 @@
     <nav id="js-nav-menu" class="hidden w-auto bg-gray-200 px-2 pb-2 pt-6 shadow lg:hidden">
     <ul class="my-0">
         
+                    <li class="pl-4">
+                <a title="Região dos Lagos Online - Cadastrar Vaga" href="/register-job"
+                    class="active md:ml-6 text-white hover:text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    Cadastrar Vaga
+                </a>
+            </li>
         
         <li class="pl-4">
             <a title="Região dos Lagos Online - Contato" href="/contact"
@@ -98,77 +124,459 @@
 </nav>
 
     <main role="main" class="container mx-auto w-full max-w-4xl flex-auto px-6 py-7">
-        <h1>Cadastre sua vaga</h1>
+            <h1>Cadastre sua vaga</h1>
 
-<p class="mb-8">
-    A Região dos Lagos Online é o melhor lugar para anunciar suas vagas de trabalho. 
-    Aqui você encontra candidatos para todas as áreas de atuação.
-</p>
-<p>Vantagens de anunciar suas vagas na Região dos Lagos Online:</p>
+    <p class="mb-8">
+        A Região dos Lagos Online é o melhor lugar para anunciar suas vagas de trabalho.
+        Aqui você encontra candidatos para todas as áreas de atuação.
+    </p>
+    <p>Vantagens de anunciar suas vagas na Região dos Lagos Online:</p>
 
-<ul class="mb-8 ml-14">
-    <li>Atraia candidatos de toda a Região dos Lagos.</li>
-    <li>Publique sua vaga gratuitamente.</li>
-</ul>
+    <ul class="mb-8 ml-14">
+        <li>Atraia candidatos de toda a Região dos Lagos.</li>
+        <li>Publique sua vaga gratuitamente.</li>
+    </ul>
 
-<p class="mb-8">Cadastre sua vaga hoje mesmo e encontre o candidato ideal para sua empresa!</p>
+    <p class="mb-8">Cadastre sua vaga hoje mesmo e encontre o candidato ideal para sua empresa!</p>
 
-<form action="/contact" class="mb-12">
-    <div class="flex flex-wrap mb-6 -mx-3">
-        <div class="w-full md:w-1/2 mb-6 md:mb-0 px-3">
-            <label class="block mb-2 text-gray-800 text-sm font-semibold" for="contact-name">
-                Nome
+    <form class="mb-12" name="register-form" method="post" action="">
+        <input type="hidden" id="created_at" name="created_at" value="">
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="title">
+                Título da Vaga
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>coloque nele o Título da Vaga
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, coloque nele o Título da Vaga
+            </span>
+        </div>
+    </span>
             </label>
 
-            <input
-                type="text"
-                id="contact-name"
-                placeholder="Maria Laura"
-                name="name"
-                class="block w-full border shadow rounded-lg outline-none mb-2 px-4 py-3"
-                required
-            >
+            <input type="text" id="title" placeholder="Ex.: Auxiliar de serviços gerais" name="title"
+                class="mb-2 block w-full rounded-lg border px-3 py-2 shadow outline-none" required>
         </div>
 
-        <div class="w-full px-3 md:w-1/2">
-            <label class="block text-gray-800 text-sm font-semibold mb-2" for="contact-email">
-                Email
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="company">
+                Empresa
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>coloque nele o Nome da Empresa.<br>Confira o nome,<br>pois é criada uma página para a Empresa.
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, coloque nele o Nome da Empresa. Confira o nome, pois é criada uma página para a Empresa.
+            </span>
+        </div>
+    </span>
             </label>
 
-            <input
-                type="email"
-                id="contact-email"
-                placeholder="email@domain.com"
-                name="email"
-                class="block w-full border shadow rounded-lg outline-none mb-2 px-4 py-3"
-                required
-            >
+            <input type="text" id="company" placeholder="Ex.: Empresa empreendimentos LTDA" name="company"
+                class="mb-2 block w-full rounded-lg border px-3 py-2 shadow outline-none" required>
         </div>
-    </div>
 
-    <div class="w-full mb-12">
-        <label class="block text-gray-800 text-sm font-semibold mb-2" for="contact-message">
-            Mensagem
-        </label>
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="city">
+                Cidade
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>selecione a Cidade da Empresa
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, selecione a Cidade da Empresa
+            </span>
+        </div>
+    </span>
+            </label>
 
-        <textarea
-            id="contact-message"
-            rows="4"
-            name="message"
-            class="block w-full border shadow rounded-lg outline-none appearance-none mb-2 px-4 py-3"
-            placeholder="Escreva sua mensagem aqui."
-            required
-        ></textarea>
-    </div>
+            <select type="text" id="city" name="city"
+                class="mb-2 block w-full rounded-lg border bg-white px-3 py-2 shadow outline-none" required>
+                <option selected>Selecione...</option>
+                <option>Araruama</option>
+                <option>Arraial do Cabo</option>
+                <option>Búzios</option>
+                <option>Cabo Frio</option>
+                <option>Iguaba Grande</option>
+                <option>Macaé</option>
+                <option>Maricá</option>
+                <option>Rio das Ostras</option>
+                <option>São Pedro da Aldeia</option>
+                <option>Saquarema</option>
+            </select>
+        </div>
 
-    <div class="flex justify-end w-full">
-        <input
-            type="submit"
-            value="Enviar"
-            class="block bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold leading-snug tracking-wide uppercase shadow rounded-lg cursor-pointer px-6 py-3"
-        >
-    </div>
-</form>
+        <div class="md:flex">
+            <div class="mb-6 w-full px-3">
+                <label class="mb-2 flex text-sm font-semibold text-gray-800" for="type">
+                    Tipo de trabalho
+                    <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>selecione o Tipo de Trabalho
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, selecione o Tipo de Trabalho
+            </span>
+        </div>
+    </span>
+                </label>
+
+                <select type="text" id="type" name="type"
+                    class="mb-2 block w-full rounded-lg border bg-white px-3 py-2 shadow outline-none" required>
+                    <option selected>Selecione...</option>
+                    <option>Efetivo</option>
+                    <option>Contrato</option>
+                    <option>Temporário</option>
+                    <option>Estágio</option>
+                    <option>Freelancer</option>
+                </select>
+            </div>
+
+            <div class="mb-6 w-full px-3">
+                <label class="mb-2 flex text-sm font-semibold text-gray-800" for="local">
+                    Local de trabalho
+                    <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>selecione o Local de Trabalho
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, selecione o Local de Trabalho
+            </span>
+        </div>
+    </span>
+                </label>
+
+                <select type="text" id="local" name="local"
+                    class="mb-2 block w-full rounded-lg border bg-white px-3 py-2 shadow outline-none" required>
+                    <option selected>Selecione...</option>
+                    <option>Presencial</option>
+                    <option>Remoto</option>
+                    <option>Hibrido</option>
+                </select>
+            </div>
+
+            <div class="mb-6 w-full px-3">
+                <label class="mb-2 flex text-sm font-semibold text-gray-800" for="salary">
+                    Salário
+                    <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>coloque nele o Valor do Salário
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, coloque nele o Valor do Salário
+            </span>
+        </div>
+    </span>
+                </label>
+
+                <div class="relative">
+                    <div class="pointer-events-none absolute inset-y-0 start-0 top-0 flex items-center ps-3.5">
+                        R$
+                    </div>
+                    <input type="text" id="salary" name="salary" x-data
+                        class="mb-2 block w-full rounded-lg border p-2.5 px-3 py-2 ps-10 text-sm shadow outline-none"
+                        placeholder="2.500,00" x-mask:dynamic="$money($input, ',', '.')" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:flex">
+            <div class="mb-6 w-full px-3">
+                <label class="mb-2 flex text-sm font-semibold text-gray-800" for="email">
+                    E-mail
+                    <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>coloque nele o e-mail destino dos currículos
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, coloque nele o e-mail destino dos currículos
+            </span>
+        </div>
+    </span>
+                </label>
+
+                <input type="email" id="email" placeholder="Ex.: contato@empresa.com.br" name="email"
+                    class="mb-2 block w-full rounded-lg border px-3 py-2 shadow outline-none">
+            </div>
+
+            <div class="mb-6 w-full px-3">
+                <label class="mb-2 flex text-sm font-semibold text-gray-800" for="whatsapp">
+                    WhatsApp
+                    <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>coloque nele o WhatsApp destino dos currículos
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, coloque nele o WhatsApp destino dos currículos
+            </span>
+        </div>
+    </span>
+                </label>
+
+                <input type="text" id="whatsapp" placeholder="Ex.: (22) 99999-9999" name="whatsapp" x-data
+                    x-mask="(99) 99999-9999" class="mb-2 block w-full rounded-lg border px-3 py-2 shadow outline-none">
+            </div>
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="description">
+                Breve descrição da vaga
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>coloque nele uma breve descrição da vaga,<br>isso facilitará na pesquisa.<br>No máximo 160 caracteres
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, coloque nele uma breve descrição da vaga, isso facilitará na pesquisa. No máximo 160 caracteres
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <input type="text" id="description" maxlength="160"
+                placeholder="Ex.: Vaga para auxiliar de serviços gerais com experiência em limpeza de escritórios"
+                name="description" class="mb-2 block w-full rounded-lg border px-3 py-2 shadow outline-none">
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="keywords">
+                Palavras Chaves
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>coloque nele palavras chaves da vaga,<br>isso facilitará na pesquisa.<br>Separado por virgula.
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, coloque nele palavras chaves da vaga, isso facilitará na pesquisa. Separado por virgula.
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <input type="text" id="keywords"
+                placeholder="Ex.: Auxiliar de serviços gerais, São Pedro da Aldeia, limpeza de escritório, limpeza em geral, limpeza do local, organização e limpeza, limpeza e conservação, limpeza de salas"
+                name="keywords" class="mb-2 block w-full rounded-lg border px-3 py-2 shadow outline-none">
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="information">
+                Informações da vaga
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo é obrigatório,<br>coloque nele toda a informação da vaga,<br>ou um resumo da mesma.
+            </span>
+            <span class="block md:hidden">
+                Esse campo é obrigatório, coloque nele toda a informação da vaga, ou um resumo da mesma.
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <textarea id="information" rows="4" name="information"
+                class="mb-2 block w-full appearance-none rounded-lg border px-3 py-2 shadow outline-none"
+                placeholder="Coloque aqui toda a informação da vaga, ou separe usando também os campos abaixo." required></textarea>
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="responsibilities">
+                Responsabilidades e Atribuições
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>você pode colocar aqui as Responsabilidades e Atribuições da Vaga.
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, você pode colocar aqui as Responsabilidades e Atribuições da Vaga.
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <textarea id="responsibilities" rows="4" name="responsibilities"
+                class="mb-2 block w-full appearance-none rounded-lg border px-3 py-2 shadow outline-none"
+                placeholder="Coloque aqui as responsabilidades e Atribuições."></textarea>
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="requirements">
+                Requisitos e Qualificações
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>você pode colocar aqui os Requisitos e Qualificações para a Vaga.
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, você pode colocar aqui os Requisitos e Qualificações para a Vaga.
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <textarea id="requirements" rows="4" name="requirements"
+                class="mb-2 block w-full appearance-none rounded-lg border px-3 py-2 shadow outline-none"
+                placeholder="Coloque aqui os requisitos e qualificações necessárias."></textarea>
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="differences">
+                Diferenciais
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>você pode colocar aqui os Diferenciais para a Vaga.
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, você pode colocar aqui os Diferenciais para a Vaga.
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <textarea id="differences" rows="4" name="differences"
+                class="mb-2 block w-full appearance-none rounded-lg border px-3 py-2 shadow outline-none"
+                placeholder="Coloque aqui o que pode ser diferencial."></textarea>
+        </div>
+
+        <div class="mb-6 w-full px-3">
+            <label class="mb-2 flex text-sm font-semibold text-gray-800" for="benefits">
+                Benefícios
+                <span x-data="{ tooltip: false }" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"
+        x-on:touchstart="tooltip = !tooltip" class="ml-2 flex h-4 w-4 cursor-pointer md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div x-show="tooltip"
+            class="text-wrap absolute -left-[2.5vw] z-50 mt-14 w-[90vw] -translate-y-8 translate-x-8 transform rounded-lg bg-blue-400 p-2 text-sm text-white md:left-auto md:mt-0 md:w-auto md:object-contain">
+            <span class="hidden md:block">
+                Esse campo não é obrigatório,<br>você pode colocar aqui os Benefícios da Vaga.
+            </span>
+            <span class="block md:hidden">
+                Esse campo não é obrigatório, você pode colocar aqui os Benefícios da Vaga.
+            </span>
+        </div>
+    </span>
+            </label>
+
+            <textarea id="benefits" rows="4" name="benefits"
+                class="mb-2 block w-full appearance-none rounded-lg border px-3 py-2 shadow outline-none"
+                placeholder="Coloque aqui os benefícios."></textarea>
+        </div>
+
+        <div class="flex w-full justify-end">
+            <input type="submit" value="Enviar" id='submit'
+                class="block cursor-pointer rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold uppercase leading-snug tracking-wide text-white shadow hover:bg-blue-600">
+        </div>
+    </form>
     </main>
 
     <footer class="mt-12 bg-white py-4 text-center text-sm" role="contentinfo">
@@ -216,9 +624,10 @@
         </div>
     </footer>
 
-    <script src="/assets/build/js/main.js?id=f68c3dcae1513f543f9cd1ed73e3005c" defer></script>
+    <script src="/assets/build/js/main.js?id=c95bdc730a73d91906de10153bdd7f6b" defer></script>
 
-        <script>
+        <script src="/assets/build/js/register.js?id=c4989673bf62c088d610417a9c6751c3"></script>
+    <script>
         const navMenu = {
             toggle() {
                 const menu = document.getElementById('js-nav-menu');
